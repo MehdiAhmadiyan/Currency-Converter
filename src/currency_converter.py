@@ -23,3 +23,4 @@ if __name__ == '__main__':
     exchange_rate = get_exchange_rate(base_currency, target_currency)
     converted_amount = convert_currency(amount, exchange_rate)
     print(f"{amount} {base_currency} is {converted_amount} {target_currency}")
+
