@@ -1,9 +1,13 @@
 import os
+
 import requests
+from cachetools import TTLCache, cached
+
+ttl_cache = TTLCache(maxsize=100, ttl=3*60*60)
 
 api_key = os.environ["EXCHANGE_API_KEY"]
 
-
+@cached(ttl_cache)
 def get_exchange_rate(base_currency, target_currency):
     url = f"https://v6.exchangerate-api.com/v6/{api_key}/latest/{base_currency}"
     response = requests.get(url)
